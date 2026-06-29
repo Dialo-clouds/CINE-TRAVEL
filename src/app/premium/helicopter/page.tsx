@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Helikopter, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Plane, MapPin, Clock, ArrowRight } from "lucide-react";
 
 export default function HelicopterPage() {
   return (

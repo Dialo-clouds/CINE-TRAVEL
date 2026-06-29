@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Gift, Star, TrendingUp, ArrowRight, Users, CreditCard, Repeat, Shield, Hotel } from "lucide-react";
+import { Gift, Star, TrendingUp, ArrowRight, Users, CreditCard, Repeat, Shield, Hotel, Car } from "lucide-react";
 
 const transactions = [
   { date: "2026-10-15", description: "Flight: Buenos Aires to El Calafate", points: 1250, type: "earned" },

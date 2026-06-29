@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { ArrowRight, Sparkles, Globe, BookOpen, Star, LogOut, LayoutDashboard, Plane, Map, Info, Menu, X, ChevronDown, ShoppingBag, Utensils, Film, Bus, Bell, Gift, Leaf, Users } from 'lucide-react';
+import { ArrowRight, Sparkles, Globe, BookOpen, Star, LogOut, LayoutDashboard, Plane, Map, Info, Menu, X, ChevronDown, ShoppingBag, Utensils, Film, Bus, Bell, Gift, Leaf, Users, Car, Crown, Wifi, Shield, Search, GraduationCap, Navigation, RefreshCw, Package } from 'lucide-react';
 
 interface ElasticHueSliderProps { value: number; onChange: (value: number) => void; min?: number; max?: number; step?: number; label?: string; }
 const ElasticHueSlider: React.FC<ElasticHueSliderProps> = ({ value, onChange, min = 0, max = 360, step = 1, label = 'Adjust Atmosphere' }) => {
@@ -58,10 +58,7 @@ const FeatureItem: React.FC<{ name: string; value: string; position: string; ico
   <div className={`absolute ${position} z-10 group transition-all duration-300 hover:scale-110 hidden sm:block`}>
     <div className="flex items-center gap-3 relative">
       <div className="relative"><div className="w-3 h-3 bg-white rounded-full group-hover:animate-pulse" /><div className="absolute -inset-1.5 bg-white/20 rounded-full blur-sm opacity-70 group-hover:opacity-100" /></div>
-      <div className="text-white relative">
-        <div className="flex items-center gap-2"><span className="text-white/70 group-hover:text-white">{icon}</span><span className="font-medium text-sm group-hover:text-white">{name}</span></div>
-        <div className="text-white/50 text-xs mt-0.5">{value}</div>
-      </div>
+      <div className="text-white relative"><div className="flex items-center gap-2"><span className="text-white/70 group-hover:text-white">{icon}</span><span className="font-medium text-sm group-hover:text-white">{name}</span></div><div className="text-white/50 text-xs mt-0.5">{value}</div></div>
     </div>
   </div>
 );
@@ -88,6 +85,17 @@ const navLinks = [
       { label: "Menu", href: "/travel-info/menu" },
       { label: "Entertainment", href: "/travel-info/entertainment" },
       { label: "Duty-Free", href: "/travel-info/duty-free" },
+      { label: "WiFi", href: "/book/wifi" },
+    ],
+  },
+  {
+    label: "Premium",
+    children: [
+      { label: "Chauffeur", href: "/premium/chauffeur" },
+      { label: "Meet & Greet", href: "/premium/meet-greet" },
+      { label: "Helicopter", href: "/premium/helicopter" },
+      { label: "VIP Terminal", href: "/premium/vip" },
+      { label: "Charter", href: "/premium/charter" },
     ],
   },
   { label: "Stories", href: "/stories" },
@@ -112,7 +120,6 @@ export function HeroOdyssey() {
   return (
     <div className="relative w-full bg-black text-white overflow-hidden">
       <div className="relative z-20 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-3 sm:py-6 min-h-screen flex flex-col">
-        {/* NAVIGATION */}
         <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }} className="backdrop-blur-3xl bg-black/50 rounded-full px-3 sm:px-6 py-3 sm:py-4 flex justify-between items-center border border-white/5">
           <div className="flex items-center gap-2 sm:gap-3">
             <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -120,15 +127,14 @@ export function HeroOdyssey() {
             <span className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider hidden sm:inline">AI</span>
           </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4">
             {navLinks.map((link) => (
               <div key={link.label} className="relative" onMouseEnter={() => setOpenDropdown(link.label)} onMouseLeave={() => setOpenDropdown(null)}>
                 {link.children ? (
                   <>
-                    <button className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1">{link.label} <ChevronDown className="w-3 h-3" /></button>
+                    <button className="text-xs xl:text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1">{link.label} <ChevronDown className="w-3 h-3" /></button>
                     {openDropdown === link.label && (
-                      <div className="absolute top-full left-0 mt-2 w-48 rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl py-2 shadow-2xl">
+                      <div className="absolute top-full left-0 mt-2 w-48 rounded-xl border border-white/10 bg-black/90 backdrop-blur-xl py-2 shadow-2xl z-50">
                         {link.children.map((child) => (
                           <Link key={child.href} href={child.href} className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors">{child.label}</Link>
                         ))}
@@ -136,7 +142,7 @@ export function HeroOdyssey() {
                     )}
                   </>
                 ) : (
-                  <Link href={link.href} className="text-sm text-white/60 hover:text-white transition-colors">{link.label}</Link>
+                  <Link href={link.href} className="text-xs xl:text-sm text-white/60 hover:text-white transition-colors">{link.label}</Link>
                 )}
               </div>
             ))}
@@ -154,7 +160,6 @@ export function HeroOdyssey() {
                 <Link href="/login" className="px-3 sm:px-5 py-1.5 sm:py-2 bg-white text-black rounded-full text-xs sm:text-sm font-medium hover:bg-gray-200 transition-colors">Get Started</Link>
               </div>
             ))}
-            {/* Mobile menu button */}
             <button className="lg:hidden p-1.5 sm:p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
             </button>
@@ -164,7 +169,7 @@ export function HeroOdyssey() {
         {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="lg:hidden mt-2 rounded-2xl border border-white/10 bg-black/95 backdrop-blur-xl overflow-hidden">
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="lg:hidden mt-2 rounded-2xl border border-white/10 bg-black/95 backdrop-blur-xl overflow-hidden z-50">
               <div className="p-4 space-y-1 max-h-[70vh] overflow-y-auto">
                 {navLinks.map((link) => (
                   <div key={link.label}>
@@ -181,7 +186,13 @@ export function HeroOdyssey() {
                   </div>
                 ))}
                 <div className="border-t border-white/5 pt-2 mt-2">
+                  <p className="px-3 py-2 text-xs text-gray-500 uppercase tracking-wider">More</p>
                   <Link href="/stories" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Stories</Link>
+                  <Link href="/book/flexible" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Flexible Dates</Link>
+                  <Link href="/book/price-lock" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Price Lock</Link>
+                  <Link href="/book/nearby" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Nearby Airports</Link>
+                  <Link href="/book/student" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Student Fares</Link>
+                  <Link href="/book/occasion" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Special Occasions</Link>
                   <Link href="/alerts" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Fare Alerts</Link>
                   <Link href="/upgrade" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Seat Upgrade</Link>
                   <Link href="/carbon" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg">Carbon Offset</Link>
@@ -193,7 +204,6 @@ export function HeroOdyssey() {
           )}
         </AnimatePresence>
 
-        {/* Feature items */}
         <div className="relative flex-1">
           <FeatureItem name="AI Storyboards" value="Cinematic planning" position="left-0 sm:left-10 top-32" icon={<Sparkles className="w-4 h-4" />} />
           <FeatureItem name="3D Globe" value="Orbital exploration" position="left-1/4 top-20" icon={<Globe className="w-4 h-4" />} />
@@ -201,7 +211,6 @@ export function HeroOdyssey() {
           <FeatureItem name="CineScore" value="Visual ratings" position="right-0 sm:right-10 top-32" icon={<Star className="w-4 h-4" />} />
         </div>
 
-        {/* Hero Content */}
         <div className="relative z-30 flex flex-col items-center text-center max-w-4xl mx-auto pb-8 sm:pb-16 px-2">
           <ElasticHueSlider value={lightningHue} onChange={setLightningHue} label="Adjust Atmosphere" />
           <div className="flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full mb-4 sm:mb-6 transition-all cursor-pointer mt-4 sm:mt-0">
@@ -218,7 +227,6 @@ export function HeroOdyssey() {
         </div>
       </div>
 
-      {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/80" />
         <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[800px] h-[400px] sm:h-[800px] rounded-full bg-gradient-to-b from-blue-500/20 to-purple-600/10 blur-3xl" />

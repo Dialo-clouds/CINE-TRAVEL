@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Crown, Coffee, Wifi, Utensils, Shower, ArrowRight } from "lucide-react";
+import { Crown, Coffee, Wifi, Utensils, ShowerHead, ArrowRight } from "lucide-react";
 
 export default function VIPPage() {
   return (
@@ -17,7 +17,7 @@ export default function VIPPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
             {[
               { icon: Coffee, label: "Private Lounge" }, { icon: Utensils, label: "Fine Dining" }, { icon: Wifi, label: "High-Speed WiFi" },
-              { icon: Shower, label: "Private Suites" }, { icon: Crown, label: "Dedicated Butler" }, { icon: ArrowRight, label: "Direct Boarding" },
+              { icon: ShowerHead, label: "Private Suites" }, { icon: Crown, label: "Dedicated Butler" }, { icon: ArrowRight, label: "Direct Boarding" },
             ].map(a => (
               <div key={a.label} className="p-4 rounded-xl border border-white/5 text-center">
                 <a.icon className="w-6 h-6 text-amber-400 mx-auto mb-2" />
