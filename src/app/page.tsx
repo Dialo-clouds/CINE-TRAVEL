@@ -5,7 +5,8 @@ import { HeroOdyssey } from "@/components/ui/hero-odyssey";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
-import { ArrowRight, Star, Sparkles, Globe, BookOpen, Camera, Compass, ChartSpline } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Globe, BookOpen, Camera, Compass, ChartSpline, Mail } from 'lucide-react';
+import { NewsletterInline } from '@/components/newsletter/newsletter-inline'; from "lucide-react";
 
 const UNSPLASH: Record<string, string> = {
   patagonia: "https://images.unsplash.com/photo-1531844251246-9a1bfaae09fc?w=800&q=80",
@@ -119,9 +120,20 @@ export default function LandingPage() {
       <footer className="border-t border-white/5 py-12 text-center">
         <p className="text-lg font-medium">CineTravel AI</p>
         <p className="text-xs text-white/20 mt-1">All expeditions begin with a single frame.</p>
-      </footer>
+        <section className="py-16 border-t border-white/5">
+    <div className="max-w-2xl mx-auto text-center px-6">
+      <Mail className="w-10 h-10 text-blue-400 mx-auto mb-4" />
+      <h3 className="text-2xl font-light mb-2">Stay in the Loop</h3>
+      <p className="text-gray-500 text-sm mb-6">Get flight deals and travel inspiration delivered to your inbox.</p>
+      <div className="max-w-md mx-auto">
+        <NewsletterInline />
+      </div>
+    </div>
+  </section>
+</footer>
     </main>
   );
 }
+
 
 
