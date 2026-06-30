@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
+import { getUserBookings } from "@/lib/services/booking-service";
 import { Plane, Ticket, User, ArrowRight, Plus, Search, Package, Bell, Shield, Calendar, Map, RefreshCw, FileText, Printer, Scan, Clock } from "lucide-react";
 
 export default function CustomerDashboard() {
@@ -14,7 +15,7 @@ export default function CustomerDashboard() {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);
       if (data.user) {
-        supabase.from("bookings").select("*").eq("user_id", data.user.id).order("created_at", { ascending: false }).limit(5)
+        getUserBookings(data.user.id)
           .then(({ data: bookingData }) => { if (bookingData) setBookings(bookingData); setLoading(false); });
       } else { setLoading(false); }
     });
@@ -109,3 +110,4 @@ export default function CustomerDashboard() {
     </div>
   );
 }
+
