@@ -99,6 +99,7 @@ const navLinks = [
     ],
   },
   { label: "Stories", href: "/stories" },
+  { label: "Newsletter", href: "/newsletter" },
 ];
 
 export function HeroOdyssey() {
