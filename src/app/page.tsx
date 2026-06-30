@@ -117,7 +117,46 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      <footer className="border-t border-white/5 py-12 text-center">
+      <footer className="border-t border-white/5 py-16">
+  <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+    <div>
+      <h4 className="text-sm font-medium mb-4">Explore</h4>
+      <div className="space-y-2 text-sm text-gray-500">
+        <Link href="/explore" className="block hover:text-white">Destinations</Link>
+        <Link href="/routes" className="block hover:text-white">Routes</Link>
+        <Link href="/fleet" className="block hover:text-white">Fleet</Link>
+        <Link href="/stories" className="block hover:text-white">Stories</Link>
+      </div>
+    </div>
+    <div>
+      <h4 className="text-sm font-medium mb-4">Book</h4>
+      <div className="space-y-2 text-sm text-gray-500">
+        <Link href="/book" className="block hover:text-white">Flights</Link>
+        <Link href="/book/multi" className="block hover:text-white">Multi-City</Link>
+        <Link href="/book/calendar" className="block hover:text-white">Price Calendar</Link>
+        <Link href="/book/group" className="block hover:text-white">Group Booking</Link>
+      </div>
+    </div>
+    <div>
+      <h4 className="text-sm font-medium mb-4">Services</h4>
+      <div className="space-y-2 text-sm text-gray-500">
+        <Link href="/customer/checkin" className="block hover:text-white">Check-in</Link>
+        <Link href="/customer/track" className="block hover:text-white">Flight Status</Link>
+        <Link href="/customer/baggage" className="block hover:text-white">Baggage</Link>
+        <Link href="/premium/chauffeur" className="block hover:text-white">Premium</Link>
+      </div>
+    </div>
+    <div>
+      <h4 className="text-sm font-medium mb-4">Company</h4>
+      <div className="space-y-2 text-sm text-gray-500">
+        <Link href="/corporate" className="block hover:text-white">Corporate</Link>
+        <Link href="/carbon" className="block hover:text-white">Sustainability</Link>
+        <Link href="/referral" className="block hover:text-white">Refer & Earn</Link>
+        <Link href="/newsletter" className="block hover:text-white">Newsletter</Link>
+      </div>
+    </div>
+  </div>
+  <div className="text-center border-t border-white/5 pt-8">
         <p className="text-lg font-medium">CineTravel AI</p>
         <p className="text-xs text-white/20 mt-1">All expeditions begin with a single frame.</p>
         <section className="py-16 border-t border-white/5">
@@ -134,6 +173,7 @@ export default function LandingPage() {
     </main>
   );
 }
+
 
 
 
